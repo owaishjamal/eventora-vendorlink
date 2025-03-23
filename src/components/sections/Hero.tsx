@@ -1,5 +1,6 @@
 
 import { Link } from 'react-router-dom';
+import SearchBar from '../ui/SearchBar';
 
 const Hero = () => {
   return (
@@ -15,6 +16,10 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-gray-700 mb-8 md:mb-10 animate-fade-in delay-100 text-balance">
             Connect with top-rated vendors, explore unique venues, and manage all aspects of your event in one easy-to-use platform.
           </p>
+          
+          <div className="mb-10 animate-fade-in delay-150">
+            <SearchBar />
+          </div>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
             <Link to="/get-started" className="btn-primary text-center">

@@ -1,6 +1,6 @@
 
-import { Star } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Star } from 'lucide-react';
 
 interface VendorCardProps {
   id: string;
@@ -9,58 +9,68 @@ interface VendorCardProps {
   image: string;
   rating: number;
   reviewCount: number;
+  startingPrice: string;
   location: string;
   featured?: boolean;
 }
 
-const VendorCard = ({ 
-  id, 
-  name, 
-  category, 
-  image, 
-  rating, 
-  reviewCount, 
-  location, 
-  featured = false 
+const VendorCard = ({
+  id,
+  name,
+  category,
+  image,
+  rating,
+  reviewCount,
+  startingPrice,
+  location,
+  featured = false,
 }: VendorCardProps) => {
   return (
     <Link 
       to={`/vendors/${id}`}
-      className={`group block rounded-xl overflow-hidden card-hover bg-white ${
-        featured ? 'ring-2 ring-planero-pink' : ''
-      }`}
+      className="bg-white rounded-xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
     >
-      <div className="relative aspect-[4/3] overflow-hidden">
+      <div className="relative">
         <img 
           src={image} 
           alt={name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          className="w-full h-48 object-cover" 
         />
         {featured && (
-          <div className="absolute top-3 left-3 bg-planero-pink text-white text-xs font-semibold py-1 px-3 rounded-full">
+          <div className="absolute top-3 left-3 bg-planero-pink text-white text-xs font-medium px-2 py-1 rounded-full">
             Featured
           </div>
         )}
+        <div className="absolute top-3 right-3 bg-white text-planero-black text-xs font-medium px-2 py-1 rounded-full">
+          {category}
+        </div>
       </div>
       
       <div className="p-4">
-        <div className="flex justify-between items-start">
-          <div>
-            <span className="text-sm text-planero-pink font-medium">{category}</span>
-            <h3 className="font-semibold text-lg mt-1 group-hover:text-planero-pink transition-colors">{name}</h3>
-          </div>
-        </div>
+        <h3 className="font-bold text-lg mb-1">{name}</h3>
         
-        <div className="flex items-center mt-2">
+        <div className="flex items-center mb-2">
           <div className="flex items-center">
-            <Star size={16} className="fill-amber-400 stroke-amber-400" />
-            <span className="ml-1 text-sm font-medium">{rating.toFixed(1)}</span>
+            <Star className="w-4 h-4 text-yellow-400 fill-yellow-400" />
+            <span className="ml-1 text-sm font-medium">{rating}</span>
           </div>
-          <span className="mx-1 text-sm text-gray-400">·</span>
+          <span className="mx-1 text-gray-400">•</span>
           <span className="text-sm text-gray-600">{reviewCount} reviews</span>
         </div>
         
-        <p className="text-sm text-gray-500 mt-1">{location}</p>
+        <div className="text-gray-600 text-sm mb-3">
+          {location}
+        </div>
+        
+        <div className="flex justify-between items-center">
+          <div>
+            <span className="text-xs text-gray-500">Starting at</span>
+            <div className="font-bold text-planero-pink">{startingPrice}</div>
+          </div>
+          <button className="px-3 py-1 bg-planero-cream text-planero-black text-sm font-medium rounded-lg hover:bg-planero-cream/80 transition-colors">
+            View Profile
+          </button>
+        </div>
       </div>
     </Link>
   );
