@@ -6,9 +6,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
-import Vendors from "./pages/Vendors";
-import VendorDetail from "./pages/VendorDetail";
-import VendorCategory from "./pages/VendorCategory";
 
 const queryClient = new QueryClient();
 
@@ -20,10 +17,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/vendors" element={<Vendors />} />
-          <Route path="/vendors/:id" element={<VendorDetail />} />
-          <Route path="/vendors/category/:category" element={<VendorCategory />} />
           {/* Future routes will be added here
+          <Route path="/vendors" element={<Vendors />} />
+          <Route path="/vendors/category/:category" element={<VendorCategory />} />
+          <Route path="/vendors/:id" element={<VendorDetail />} />
           <Route path="/venues" element={<Venues />} />
           <Route path="/venues/:id" element={<VenueDetail />} />
           <Route path="/planning-tools" element={<PlanningTools />} />
