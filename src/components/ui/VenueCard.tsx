@@ -1,26 +1,31 @@
 
 import { Link } from 'react-router-dom';
+import { Star } from 'lucide-react';
 
 interface VenueCardProps {
-  id: string;
+  id?: string;
   name: string;
   image: string;
   location: string;
-  city: string;
-  state: string;
+  city?: string;
+  state?: string;
   capacity: string;
   priceRange: string;
+  rating?: number;
+  reviews?: number;
 }
 
 const VenueCard = ({ 
-  id, 
+  id = "1", 
   name, 
   image, 
   location, 
-  city, 
-  state, 
+  city = "", 
+  state = "", 
   capacity, 
-  priceRange 
+  priceRange,
+  rating,
+  reviews
 }: VenueCardProps) => {
   return (
     <div className="group bg-white rounded-xl overflow-hidden card-hover">
@@ -33,8 +38,19 @@ const VenueCard = ({
       </div>
       
       <div className="p-4">
-        <div className="text-sm text-gray-500">{city}, {state}</div>
+        <div className="text-sm text-gray-500">{city || state ? `${city}, ${state}` : location}</div>
         <h3 className="font-semibold text-lg mt-1 group-hover:text-planero-pink transition-colors">{name}</h3>
+        
+        {rating && reviews && (
+          <div className="flex items-center mt-2">
+            <div className="flex items-center">
+              <Star size={16} className="fill-amber-400 stroke-amber-400" />
+              <span className="ml-1 text-sm font-medium">{rating.toFixed(1)}</span>
+            </div>
+            <span className="mx-1 text-sm text-gray-400">·</span>
+            <span className="text-sm text-gray-600">{reviews} reviews</span>
+          </div>
+        )}
         
         <div className="flex justify-between items-center mt-2">
           <div className="flex items-center text-sm text-gray-600">

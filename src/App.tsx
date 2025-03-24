@@ -12,6 +12,12 @@ import PlanningTools from "./pages/PlanningTools";
 import Inspirations from "./pages/Inspirations";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import OrderSuccess from "./pages/OrderSuccess";
+import Profile from "./pages/Profile";
+import VendorSignup from "./pages/VendorSignup";
+import EventPlanner from "./pages/EventPlanner";
 
 const queryClient = new QueryClient();
 
@@ -26,16 +32,17 @@ const App = () => (
           <Route path="/vendors" element={<FindVendors />} />
           <Route path="/venues" element={<Venues />} />
           <Route path="/planning-tools" element={<PlanningTools />} />
+          <Route path="/planning-tools/:toolId" element={<PlanningTools />} />
           <Route path="/inspirations" element={<Inspirations />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          {/* Future routes will be added here
-          <Route path="/vendors/category/:category" element={<VendorCategory />} />
-          <Route path="/vendors/:id" element={<VendorDetail />} />
-          <Route path="/venues/:id" element={<VenueDetail />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/order-success" element={<OrderSuccess />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:tab" element={<Profile />} />
           <Route path="/vendor-signup" element={<VendorSignup />} />
-          */}
+          <Route path="/event" element={<EventPlanner />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

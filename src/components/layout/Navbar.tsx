@@ -45,6 +45,9 @@ const Navbar = () => {
             <Link to="/inspirations" className="text-planero-black hover:text-planero-pink transition-colors link-underline">
               Inspirations
             </Link>
+            <Link to="/event" className="text-planero-black hover:text-planero-pink transition-colors link-underline">
+              Event
+            </Link>
           </nav>
 
           {/* Action Buttons */}
@@ -58,7 +61,7 @@ const Navbar = () => {
                 0
               </span>
             </Link>
-            <Link to="/account" className="text-planero-black hover:text-planero-pink transition-colors">
+            <Link to="/profile" className="text-planero-black hover:text-planero-pink transition-colors">
               <User size={20} />
             </Link>
             <Link to="/login" className="btn-secondary">
@@ -95,6 +98,9 @@ const Navbar = () => {
             <Link to="/inspirations" className="text-planero-black hover:text-planero-pink transition-colors py-2">
               Inspirations
             </Link>
+            <Link to="/event" className="text-planero-black hover:text-planero-pink transition-colors py-2">
+              Event
+            </Link>
             <div className="pt-2 flex space-x-4">
               <Link to="/cart" className="text-planero-black hover:text-planero-pink transition-colors relative">
                 <ShoppingCart size={20} />
@@ -102,7 +108,7 @@ const Navbar = () => {
                   0
                 </span>
               </Link>
-              <Link to="/account" className="text-planero-black hover:text-planero-pink transition-colors">
+              <Link to="/profile" className="text-planero-black hover:text-planero-pink transition-colors">
                 <User size={20} />
               </Link>
             </div>
