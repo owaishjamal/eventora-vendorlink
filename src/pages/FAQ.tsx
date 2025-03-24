@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
 import { Search } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FAQ = () => {
   const [searchQuery, setSearchQuery] = useState('');
