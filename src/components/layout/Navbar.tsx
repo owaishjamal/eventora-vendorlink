@@ -2,10 +2,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
+import SearchDialog from '@/components/ui/SearchDialog';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +24,7 @@ const Navbar = () => {
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-sm py-3' : 'bg-transparent py-5'
+      isScrolled ? 'bg-white shadow-sm py-3' : 'bg-white/80 backdrop-blur-md py-5'
     }`}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex justify-between items-center">
@@ -52,7 +54,10 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden md:flex items-center space-x-4">
-            <button className="text-planero-black hover:text-planero-pink transition-colors">
+            <button 
+              className="text-planero-black hover:text-planero-pink transition-colors"
+              onClick={() => setIsSearchOpen(true)}
+            >
               <Search size={20} />
             </button>
             <Link to="/cart" className="text-planero-black hover:text-planero-pink transition-colors relative">
@@ -102,6 +107,15 @@ const Navbar = () => {
               Event
             </Link>
             <div className="pt-2 flex space-x-4">
+              <button 
+                className="text-planero-black hover:text-planero-pink transition-colors"
+                onClick={() => {
+                  setIsSearchOpen(true);
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                <Search size={20} />
+              </button>
               <Link to="/cart" className="text-planero-black hover:text-planero-pink transition-colors relative">
                 <ShoppingCart size={20} />
                 <span className="absolute -top-1 -right-1 bg-planero-pink text-white text-xs font-bold rounded-full w-4 h-4 flex items-center justify-center">
@@ -123,6 +137,9 @@ const Navbar = () => {
           </nav>
         </div>
       )}
+
+      {/* Search Dialog */}
+      <SearchDialog open={isSearchOpen} setOpen={setIsSearchOpen} />
     </header>
   );
 };

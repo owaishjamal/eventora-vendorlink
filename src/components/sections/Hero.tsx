@@ -2,13 +2,13 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-// Array of beautiful event images for the slideshow
+// Array of beautiful Indian wedding and event images for the slideshow
 const slideImages = [
-  "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1920&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6a3?w=1920&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=1920&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=1920&auto=format&fit=crop&q=80",
-  "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=1920&auto=format&fit=crop&q=80"
+  "https://images.unsplash.com/photo-1619370823779-c81d4877ad47?w=1920&auto=format&fit=crop&q=80", // Indian wedding
+  "https://images.unsplash.com/photo-1604604874768-071e1300a54c?w=1920&auto=format&fit=crop&q=80", // Indian venue
+  "https://images.unsplash.com/photo-1592861611647-9ce8b5d49be5?w=1920&auto=format&fit=crop&q=80", // Indian celebration
+  "https://images.unsplash.com/photo-1562246230-5d3954e5c2fc?w=1920&auto=format&fit=crop&q=80", // Mumbai cityscape
+  "https://images.unsplash.com/photo-1616991936325-2f493068b423?w=1920&auto=format&fit=crop&q=80"  // Indian bride
 ];
 
 const Hero = () => {
@@ -31,7 +31,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative overflow-hidden h-screen">
+    <section className="relative overflow-hidden h-screen pt-16"> {/* Added pt-16 to prevent overlap with header */}
       {/* Slideshow background */}
       <div className="absolute inset-0 w-full h-full">
         {/* Current slide with fade-out animation */}
@@ -46,22 +46,22 @@ const Hero = () => {
           style={{ backgroundImage: `url(${slideImages[nextSlide]})` }}
         ></div>
         
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70"></div>
+        {/* Overlay gradient - Made it darker for better text visibility */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/60 to-black/75"></div>
       </div>
       
       <div className="container mx-auto px-4 md:px-6 relative z-10 h-full flex flex-col justify-center">
-        <div className="max-w-4xl mx-auto text-center pt-24">
+        <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-fade-in text-balance text-white text-shadow-lg">
-            Plan your perfect event with the right vendors
+            Plan your perfect Indian event with the right vendors in Mumbai
           </h1>
           
           <p className="text-lg md:text-xl text-white/90 mb-8 md:mb-10 animate-fade-in delay-100 text-balance">
-            Connect with top-rated vendors, explore unique venues, and manage all aspects of your event in one easy-to-use platform.
+            Connect with top-rated Mumbai vendors, explore unique venues, and manage all aspects of your event in one easy-to-use platform.
           </p>
           
           <div className="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in delay-200">
-            <Link to="/get-started" className="btn-primary text-center">
+            <Link to="/event" className="btn-primary text-center">
               Start Planning
             </Link>
             <Link to="/vendor-signup" className="btn-secondary text-center">
