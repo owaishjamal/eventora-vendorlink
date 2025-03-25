@@ -30,6 +30,8 @@ import ContactUs from "./pages/ContactUs";
 import FAQ from "./pages/FAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import Registry from "./pages/Registry";
+import Invitations from "./pages/Invitations";
 
 const queryClient = new QueryClient();
 
@@ -46,6 +48,8 @@ const App = () => (
           <Route path="/planning-tools" element={<PlanningTools />} />
           <Route path="/planning-tools/budget-calculator" element={<BudgetCalculator />} />
           <Route path="/planning-tools/wedding-checklist" element={<WeddingChecklist />} />
+          <Route path="/planning-tools/registry" element={<Registry />} />
+          <Route path="/planning-tools/invitations" element={<Invitations />} />
           <Route path="/planning-tools/:toolId" element={<PlanningTools />} />
           <Route path="/inspirations" element={<Inspirations />} />
           <Route path="/login" element={<Login />} />
