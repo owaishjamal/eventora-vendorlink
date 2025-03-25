@@ -33,6 +33,11 @@ import TermsOfService from "./pages/TermsOfService";
 import Registry from "./pages/Registry";
 import Invitations from "./pages/Invitations";
 
+// Vendor pages
+import EditProfile from "./pages/vendor/EditProfile";
+import Settings from "./pages/vendor/Settings";
+import ManageServices from "./pages/vendor/ManageServices";
+
 // Vendor category pages
 import Photography from "./pages/vendors/Photography";
 import Beauty from "./pages/vendors/Beauty";
@@ -73,6 +78,9 @@ const App = () => (
           <Route path="/vendor-login" element={<VendorLogin />} />
           <Route path="/vendor-dashboard" element={<VendorDashboard />} />
           <Route path="/vendor-pricing" element={<VendorPricing />} />
+          <Route path="/vendor/edit-profile" element={<EditProfile />} />
+          <Route path="/vendor/settings" element={<Settings />} />
+          <Route path="/vendor/services" element={<ManageServices />} />
           <Route path="/event" element={<EventPlanner />} />
           <Route path="/success-stories" element={<SuccessStories />} />
           <Route path="/support" element={<SupportHub />} />
