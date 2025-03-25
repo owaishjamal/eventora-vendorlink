@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LocationProvider } from "./contexts/LocationContext";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FindVendors from "./pages/FindVendors";
@@ -52,58 +53,60 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/vendors" element={<FindVendors />} />
-          <Route path="/venues" element={<Venues />} />
-          <Route path="/planning-tools" element={<PlanningTools />} />
-          <Route path="/planning-tools/budget-calculator" element={<BudgetCalculator />} />
-          <Route path="/planning-tools/wedding-checklist" element={<WeddingChecklist />} />
-          <Route path="/planning-tools/registry" element={<Registry />} />
-          <Route path="/planning-tools/invitations" element={<Invitations />} />
-          <Route path="/planning-tools/:toolId" element={<PlanningTools />} />
-          <Route path="/inspirations" element={<Inspirations />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/order-success" element={<OrderSuccess />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/profile/:tab" element={<Profile />} />
-          <Route path="/vendor-signup" element={<VendorSignup />} />
-          <Route path="/vendor-login" element={<VendorLogin />} />
-          <Route path="/vendor-dashboard" element={<VendorDashboard />} />
-          <Route path="/vendor-pricing" element={<VendorPricing />} />
-          <Route path="/vendor/edit-profile" element={<EditProfile />} />
-          <Route path="/vendor/settings" element={<Settings />} />
-          <Route path="/vendor/services" element={<ManageServices />} />
-          <Route path="/event" element={<EventPlanner />} />
-          <Route path="/success-stories" element={<SuccessStories />} />
-          <Route path="/support" element={<SupportHub />} />
-          <Route path="/help" element={<HelpCenter />} />
-          <Route path="/contact" element={<ContactUs />} />
-          <Route path="/faq" element={<FAQ />} />
-          <Route path="/privacy" element={<PrivacyPolicy />} />
-          <Route path="/terms" element={<TermsOfService />} />
-          
-          {/* Vendor category pages */}
-          <Route path="/vendors/category/photography" element={<Photography />} />
-          <Route path="/vendors/category/beauty" element={<Beauty />} />
-          <Route path="/vendors/category/catering" element={<Catering />} />
-          <Route path="/vendors/category/florists" element={<Florists />} />
-          <Route path="/vendors/category/transportation" element={<Transportation />} />
-          <Route path="/vendors/category/venues" element={<VendorVenues />} />
-          <Route path="/vendors/category/entertainment" element={<Entertainment />} />
-          <Route path="/vendors/category/gifts" element={<Gifts />} />
-          
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <LocationProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/vendors" element={<FindVendors />} />
+            <Route path="/venues" element={<Venues />} />
+            <Route path="/planning-tools" element={<PlanningTools />} />
+            <Route path="/planning-tools/budget-calculator" element={<BudgetCalculator />} />
+            <Route path="/planning-tools/wedding-checklist" element={<WeddingChecklist />} />
+            <Route path="/planning-tools/registry" element={<Registry />} />
+            <Route path="/planning-tools/invitations" element={<Invitations />} />
+            <Route path="/planning-tools/:toolId" element={<PlanningTools />} />
+            <Route path="/inspirations" element={<Inspirations />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/order-success" element={<OrderSuccess />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile/:tab" element={<Profile />} />
+            <Route path="/vendor-signup" element={<VendorSignup />} />
+            <Route path="/vendor-login" element={<VendorLogin />} />
+            <Route path="/vendor-dashboard" element={<VendorDashboard />} />
+            <Route path="/vendor-pricing" element={<VendorPricing />} />
+            <Route path="/vendor/edit-profile" element={<EditProfile />} />
+            <Route path="/vendor/settings" element={<Settings />} />
+            <Route path="/vendor/services" element={<ManageServices />} />
+            <Route path="/event" element={<EventPlanner />} />
+            <Route path="/success-stories" element={<SuccessStories />} />
+            <Route path="/support" element={<SupportHub />} />
+            <Route path="/help" element={<HelpCenter />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/terms" element={<TermsOfService />} />
+            
+            {/* Vendor category pages */}
+            <Route path="/vendors/category/photography" element={<Photography />} />
+            <Route path="/vendors/category/beauty" element={<Beauty />} />
+            <Route path="/vendors/category/catering" element={<Catering />} />
+            <Route path="/vendors/category/florists" element={<Florists />} />
+            <Route path="/vendors/category/transportation" element={<Transportation />} />
+            <Route path="/vendors/category/venues" element={<VendorVenues />} />
+            <Route path="/vendors/category/entertainment" element={<Entertainment />} />
+            <Route path="/vendors/category/gifts" element={<Gifts />} />
+            
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </LocationProvider>
   </QueryClientProvider>
 );
 

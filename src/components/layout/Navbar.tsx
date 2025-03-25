@@ -1,13 +1,22 @@
 
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ShoppingCart, Search, User } from 'lucide-react';
+import { Menu, X, ShoppingCart, Search, User, MapPin } from 'lucide-react';
 import SearchDialog from '@/components/ui/SearchDialog';
+import { useLocation } from '@/contexts/LocationContext';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const { currentLocation, setCurrentLocation, cities } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,6 +41,29 @@ const Navbar = () => {
           <Link to="/" className="text-2xl font-bold text-planero-black">
             PlanEro
           </Link>
+
+          {/* Location Selector */}
+          <div className="hidden md:flex items-center ml-4">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" className="flex items-center gap-2 bg-white">
+                  <MapPin size={16} />
+                  <span>{currentLocation}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-40 bg-white">
+                {cities.map((city) => (
+                  <DropdownMenuItem 
+                    key={city} 
+                    className={`cursor-pointer ${city === currentLocation ? 'bg-planero-light-gray' : ''}`}
+                    onClick={() => setCurrentLocation(city)}
+                  >
+                    {city}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -78,12 +110,35 @@ const Navbar = () => {
           </div>
 
           {/* Mobile menu button */}
-          <button 
-            className="md:hidden text-planero-black" 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center">
+            {/* Mobile Location Selector */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button variant="outline" size="sm" className="mr-2 flex items-center gap-1 bg-white">
+                  <MapPin size={14} />
+                  <span className="text-sm">{currentLocation}</span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-40 bg-white">
+                {cities.map((city) => (
+                  <DropdownMenuItem 
+                    key={city} 
+                    className={`cursor-pointer ${city === currentLocation ? 'bg-planero-light-gray' : ''}`}
+                    onClick={() => setCurrentLocation(city)}
+                  >
+                    {city}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+            <button 
+              className="text-planero-black" 
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
